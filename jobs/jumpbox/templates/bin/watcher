@@ -54,7 +54,7 @@ provision() {
 	log1 "Setting up user ${user}"
 	if ! grep -q "^${user}:" /etc/passwd; then
 		logn "User ${user} does not exist; adding"
-		/usr/sbin/useradd -m -d /u/${user} -s ${shell} -g staff -G "${groups}" ${user}
+		/usr/sbin/useradd -m -d ${home} -s ${shell} -g staff -G "${groups}" ${user}
 	else
 		/usr/sbin/usermod -a -G "${groups}" "${user}"
 	fi
